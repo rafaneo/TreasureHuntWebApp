@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt - Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            background: url('treasure-map.jpg') no-repeat center center/cover;
+            border: 5px solid #333;
+            border-radius: 10px;
+        }
+        .treasure {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('treasure-chest.png') no-repeat center center/cover;
+            display: none;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container" onclick="findTreasure(event)">
+        <div class="treasure" id="treasure"></div>
+    </div>
+    <div class="message" id="message"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            placeTreasure();
+        });
+
+        function placeTreasure() {
+            const gameContainer = document.querySelector('.game-container');
+            const treasure = document.getElementById('treasure');
+
+            const containerWidth = gameContainer.clientWidth;
+            const containerHeight = gameContainer.clientHeight;
+
+            const randomX = Math.floor(Math.random() * (containerWidth - 50));
+            const randomY = Math.floor(Math.random() * (containerHeight - 50));
+
+            treasure.style.left = `${randomX}px`;
+            treasure.style.top = `${randomY}px`;
+        }
+
+        function findTreasure(event) {
+            const treasure = document.getElementById('treasure');
+            const rect = treasure.getBoundingClientRect();
+            const clickX = event.clientX;
+            const clickY = event.clientY;
+
+            if (clickX >= rect.left && clickX <= rect.right && clickY >= rect.top && clickY <= rect.bottom) {
+                treasure.style.display = 'block';
+                document.getElementById('message').innerText = 'Congratulations! You found the treasure!';
+            }
+        }
+    </script>
+</body>
+</html>
