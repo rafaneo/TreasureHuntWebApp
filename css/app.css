@@ -1,0 +1,27 @@
+.hunts {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hunts td, #hunts th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .hunts tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .hunts tr:hover {background-color: #ddd;}
+  
+  .hunts th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+
+  }

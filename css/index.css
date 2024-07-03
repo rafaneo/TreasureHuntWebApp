@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: #91f2f7;
+    background: #a5eeb7;
     font-family: Arial, sans-serif;
 }
 .container {
@@ -21,8 +21,10 @@ p {
     font-size: 1.2em;
     color: #555;
 }
+
 button {
-    background: #0ba9d8;
+    background: #d16c3a;
+    
     color: #fff;
     padding: 15px 30px;
     font-size: 1.2em;
@@ -31,8 +33,13 @@ button {
     cursor: pointer;
     transition: background 0.3s;
 }
+
+.bold {
+    font-weight: bold;
+}
+
 button:hover {
-    background: #3a4ed1;
+    background: #b74507;
 }
 
 .text-size-1 { 
