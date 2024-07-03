@@ -27,7 +27,7 @@ if (!button) {
 }
 
 return result;
-}
+
 
 function testGamePage() {
 const result = { name: 'Game Page Tests', passed: true, messages: [] };

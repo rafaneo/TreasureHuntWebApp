@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt Testing</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Treasure Hunt Testing</h1>
+        <button onclick="runTests()">Run Tests</button>
+        <div id="test-results" class="result-container"></div>
+    </div>
+
+    <iframe id="test-frame" style="display:none;"></iframe>
+
+    <script>
+        function runTests() {
+            const results = [];
+            const iframe = document.getElementById('test-frame');
+
+            iframe.onload = function() {
+                const iframeWindow = iframe.contentWindow;
+                const iframeDocument = iframe.contentDocument || iframeWindow.document;
+
+                // Landing Page Tests
+                if (iframeWindow.location.pathname.endsWith('index.html')) {
+                    results.push(testLandingPage(iframeDocument));
+                }
+
+                // Game Page Tests
+                if (iframeWindow.location.pathname.endsWith('game.html')) {
+                    results.push(testGamePage(iframeDocument, iframeWindow));
+                }
+
+                displayResults(results);
+
+                // Load the next test page
+                if (iframeWindow.location.pathname.endsWith('index.html')) {
+                    iframe.src = 'game.html';
+                } else {
+                    iframe.src = 'index.html'; // To re-run the tests
+                }
+            };
+
+            // Start the tests by loading the landing page
+            iframe.src = 'index.html';
+        }
+
+        function testLandingPage(doc) {
+            const result = { name: 'Landing Page Tests', passed: true, messages: [] };
+
+            // Test Page Title
+            if (doc.title !== 'Treasure Hunt') {
+                result.passed = false;
+                result.messages.push('Title should be "Treasure Hunt"');
+            }
+
+            // Test Button Presence
+            const button = doc.querySelector('button');
+            if (!button) {
+                result.passed = false;
+                result.messages.push('Start Game button should be present');
+            }
+
+            return result;
+        }
+
+        function testGamePage(doc, win) {
+            const result = { name: 'Game Page Tests', passed: true, messages: [] };
+
+            // Test Treasure Placement
+            const treasure = doc.getElementById('treasure');
+            if (!treasure) {
+                result.passed = false;
+                result.messages.push('Treasure element should be present');
+            }
+
+            // Simulate clicking the treasure
+            if (treasure) {
+                const box = treasure.getBoundingClientRect();
+                simulateClick(win, box.left + box.width / 2, box.top + box.height / 2);
+
+                // Check if treasure is displayed
+                if (win.getComputedStyle(treasure).display !== 'block') {
+                    result.passed = false;
+                    result.messages.push('Treasure should be displayed on click');
+                }
+
+                // Check for congratulatory message
+                const message = doc.getElementById('message').innerText;
+                if (message !== 'Congratulations! You found the treasure!') {
+                    result.passed = false;
+                    result.messages.push('Congratulatory message should be displayed');
+                }
+            }
+
+            return result;
+        }
+
+        function simulateClick(win, x, y) {
+            const clickEvent = new win.MouseEvent('click', {
+                clientX: x,
+                clientY: y,
+                bubbles: true,
+                cancelable: true,
+                view: win,
+            });
+            win.document.elementFromPoint(x, y).dispatchEvent(clickEvent);
+        }
+
+        function displayResults(results) {
+            const resultContainer = document.getElementById('test-results');
+            resultContainer.innerHTML = '';
+
+            results.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'test-result';
+                resultElement.innerHTML = `<strong>${result.name}:</strong> ${result.passed ? 'PASSED' : 'FAILED'}`;
+                if (!result.passed) {
+                    const messages = document.createElement('ul');
+                    result.messages.forEach(message => {
+                        const messageItem = document.createElement('li');
+                        messageItem.innerText = message;
+                        messages.appendChild(messageItem);
+                    });
+                    resultElement.appendChild(messages);
+                }
+                resultContainer.appendChild(resultElement);
+            });
+        }
+    </script>
+</body>
+</html>
