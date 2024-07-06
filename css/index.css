@@ -34,6 +34,35 @@ p {
     transition: background 0.3s;
 }
 
+.submit-btn{ 
+    background: #8abb2e;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    
+}
+
+.submit-btn:hover {
+    background: #58820b;
+}
+
+.skip-btn {
+    background: #f74a1a;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.skip-btn:hover {
+    background: #b42c11;
+}
 .bold {
     font-weight: bold;
 }
@@ -76,4 +105,8 @@ button:hover {
     padding: 20px;
     margin-left: 20svh;
     margin-right: 20svh;
+}
+
+.center {
+    text-align: center;
 }

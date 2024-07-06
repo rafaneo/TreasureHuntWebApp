@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="../css/pre_start.css">
-
+    <link rel="stylesheet" type="text/css" href="../css/questions.css">
     <title>Treasure Hunt - Player information</title>
 </head>
 <body>
@@ -13,14 +13,27 @@
         <div class="container grid-item">
 
             <div>
+                <div class="scoreBox" id="box">
+                    Score: <span class="score" id="score">0</span>
+                </div>
+                    
+                </p>
                 <p id="question-text">Question: </p>
 
                 <div>
-                    <input class="player-name" type="text" id="player-name" placeholder="Answer: ">
+                    <input class="player-name" type="text" id="answer" placeholder="Answer: ">
                 </div>
-                <div>
-                    <button class="button" id='submit-btn'>Submit</button>
-                    <button class="button" id='skip-btn'>Skip</button>
+                <div class="center" >
+                    <button id="submit-btn" class="submit-btn" id='submit-btn'>Submit</button>
+                    
+                    <button id="true-btn" class="submit-btn" id='true-btn'>True</button>
+                    <button id="false-btn" class="submit-btn" id='false-btn'>False</button>    
+                        
+                    <button id="mcq-A-btn" class="submit-btn" id='hint-btn'>A</button>
+                    <button id="mcq-B-btn" class="submit-btn" id='hint-btn'>B</button>
+                    <button id="mcq-C-btn" class="submit-btn" id='hint-btn'>C</button>
+                    <button id="mcq-D-btn" class="submit-btn" id='hint-btn'>D</button>
+                    <button id="skip-btn" class="skip-btn" id='skip-btn'>Skip</button>
                 </div>
             </div>
         </div>

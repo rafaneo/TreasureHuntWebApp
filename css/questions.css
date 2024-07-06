@@ -1,0 +1,15 @@
+.scoreBox {
+    background-color: rgb(105, 231, 105);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    width: 150px;
+    margin: 20px auto; /* Center the box horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better aesthetics */
+}
+
+.scoreBox .score {
+    font-weight: bold;
+}
