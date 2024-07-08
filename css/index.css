@@ -50,6 +50,60 @@ p {
     background: #58820b;
 }
 
+.true-btn{ 
+    background: #8abb2e;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 30%;
+    
+}
+
+.true-btn:hover {
+    background: #58820b;
+}
+
+
+.false-btn{ 
+    background: #bb372e;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 30%;
+    
+}
+
+.false-btn:hover {
+    background: #820b0b;
+}
+
+
+.mcq-btn{ 
+    background: #8abb2e;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 30%;
+    
+}
+
+.mcq-btn:hover {
+    background: #58820b;
+}
+
+
 .skip-btn {
     background: #f74a1a;
     color: #fff;
