@@ -1,16 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="html-test" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Hunt Testing</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/app.css">
+
 </head>
-<body>
+<body class="body-test">
     <div class="container">
-        <h1>Treasure Hunt Testing</h1>
-        <button onclick="runTests()">Run Tests</button>
+        <h1 class="m-2">Treasure Hunt Testing</h1>
+        <p>Our method for testing included mainly of conducting Quality assurance tests where users engaged with the application and gave feedback.</p>
+        <p>The user subjects the interacted where given the minimum requirements of the web-app so that their feedback remains within the scope of the given requirements </p>
+
+        <button class="true-btn mb-2" onclick="runTests()">Test</button>
         <div id="test-results" class="result-container"></div>
+
+        <h1>
+            User Acceptance Test Plan
+        </h1>
+        <p>
+            The purpose of this UAT plan is to validate that the treasure hunt application functions as expected and meets the specified requirements.
+        </p>
+
+        <table id="hunts-table" class="hunts">
+            <tr>
+                <th>
+                    Objective
+                </th>
+                <th>
+                    Preconditions
+                </th>
+                <th>
+                    Steps
+                </th>
+                <th>
+                    Expected Result
+                </th>
+                <th>
+                    Actual Result
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Fetch and Display Question</td>
+                <td>
+                    The application is loaded, and the API is available.
+                </td>
+                <td>
+                    <li>
+                        Load the application.
+                    </li>
+                    <li>
+                        Initiate a request to fetch a question from the API.
+                    </li>
+                    <li>
+                        Observe the question displayed on the screen.
+                    </li>
+                </td>
+                <td>
+                    The question should be displayed along with options or input fields based on its type (multiple choice, true/false, or text-based).
+                </td>
+                <td>
+                    PASS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Handle Multiple Choice Question</td>
+                <td>
+                    The API returns a multiple choice question.
+                </td>
+                <td>
+                        <li>
+                            Load the application.
+                        </li>
+                        <li>
+                            Fetch a multiple choice question from the API.
+                        </li>
+                        <li>
+                            Select an option to submit the answer.
+                        </li>
+                </td>
+                <td>
+                    The application should validate the answer and update the points based on the correctness of the answer.                </td>
+                <td>
+                    PASS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Handle True/False Question</td>
+                <td>
+                    The application is loaded, and the API is available.
+                </td>
+                <td>
+                        <li>
+                            Load the application.
+                        </li>
+
+                        <li>
+                            Fetch a true/false question from the API.
+                        </li>
+
+                        <li>
+                            Select true or false to submit the answer.
+                        </li>
+                </td>
+                <td>
+                    The application should validate the answer and update the points based on the correctness of the answer.                </td>
+                <td>
+                    PASS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Handle Text-Based Question</td>
+                <td>
+                    The application is loaded, and the API is available.
+                </td>
+                <td>
+                    <li>
+                        Load the application.
+                    </li>
+                    <li>
+                        Fetch a text-based question from the API.
+                    </li>
+                    <li>
+                        Enter the answer in the input field and submit.
+                    </li>
+                </td>
+                <td>
+                    The application should validate the answer and update the points based on the correctness of the answer.                </td>
+                <td>
+                    PASS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Handle Skip Question</td>
+                <td>
+                    A question is displayed.                
+                </td>
+                <td>
+                    <li>
+                        Load the application.
+                    </li>
+                    <li>
+                        Fetch a text-based question from the API.
+                    </li>
+                    <li>
+                        Click the skip button.
+                    </li>
+                </td>
+                <td>
+                    The application should update the points according to the skip points provided by the API and fetch a new question.
+                <td>
+                    PASS
+                </td>
+            </tr>
+        </table>
+
+        <div class="">
+
+            <h1>
+                Usability Assessment Using Nielsen's 10 Heuristics
+
+            </h1>
+
+            <table id="hunts-table" class="hunts">
+                <tr>
+                    <th>
+                        Objective
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Assessment
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Visibility of System Status
+                    </td>
+                    <td>
+                        The system should always keep users informed about what is going on, through appropriate feedback.
+                    </td>
+                    <td>
+                        <li>
+                            For example the "Fetching..." message provides feedback when data is being loaded, keeping users informed.
+                        </li>
+                        <li>
+                            Points are updated in real-time after each question is answered or skipped.
+                        </li>
+                        <li>
+                            Congratulations page clearly indicates the completion of the treasure hunt.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Match Between System and the Real World
+                    </td>
+                    <td>
+                        The system should speak the users' language, with words, phrases, and concepts familiar to the user, rather than system-oriented terms.
+                    </td>
+                    <td>
+                            <li>
+                                The questions and instructions are written in clear, understandable language.
+                            </li>
+                            <li>
+                                Navigation and interaction follow common web application conventions.
+                            </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        User Control and Freedom
+                    </td>
+                    <td>
+                        Users often choose system functions by mistake and will need a clearly marked "emergency exit" to leave the unwanted state without having to go through an extended dialogue.                    </td>
+                    <td>
+                        <li>
+                            Users can skip questions if they find them too difficult.
+                        </li>
+
+                        <li>
+                            There should be a clear way to restart or exit the hunt if needed, but this should be verified.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Consistency and Standards</td>
+                    <td>
+                        Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions.
+                    </td>
+                    <td>
+                        <li>
+                            The app consistently uses the same format for presenting questions and options.
+                        </li>
+                        <li>
+                            Button placements and actions are consistent throughout the app.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Error Prevention</td>
+                    <td>
+                       Careful design which prevents a problem from occurring or shows an error message.          
+                    </td>
+                    <td>
+                        <li>
+                            Input validation for text-based answers should be implemented to prevent incorrect submissions.
+                        </li>
+                        <li>
+                            Clear instructions reduce the likelihood of user errors.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Recognition Rather Than Recall</td>
+                    <td>
+                        Minimize the user's memory load by making objects, actions, and options visible.
+                    </td>
+                    <td>
+                        <li>
+                            The app displays all possible actions (answer, skip) clearly without requiring users to remember steps.
+                        </li>
+                        <li>
+                            Question types are immediately recognizable, reducing cognitive load.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Flexibility and Efficiency of Use</td>
+                    <td>
+                        Accelerators — unseen by the novice user — may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users.       
+                    </td>
+                    <td>
+                        <li>
+                            While the app is straightforward and likely caters to all users similarly, adding keyboard shortcuts for navigation could improve efficiency for power users.
+                        </li>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Aesthetic and Minimalist Design</td>
+                    <td>
+                        Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information competes with the relevant units of information and diminishes their relative visibility.         
+                    </td>
+                    <td>
+                        <li>
+                            The app maintains a clean and simple design, focusing on the task at hand without unnecessary distractions.
+                        </li>
+                        <li>
+                            Each screen presents only the necessary information to the user.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Help Users Recognize, Diagnose, and Recover from Errors</td>
+                    <td>
+                        Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.         
+                    </td>
+                    <td>
+                        <li>
+                            Error messages should be clear and provide guidance on how to resolve issues, such as incorrect answers.
+                        </li>
+                        <li>
+                            Specific feedback for incorrect answers could help users understand their mistakes.
+                        </li>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Help and Documentation</td>
+                    <td>
+                        Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation.                    </td>
+                    <td>
+                        <li>
+                            The app should include a help section or FAQ explaining how to use the app and the rules of the treasure hunt.                        </li>
+                        <li>
+                            Inline hints and tips can improve usability without requiring users to leave the main interface.
+                        </li>
+                    </td>
+                </tr>
+            </table>
+        </div> 
     </div>
 
     <iframe id="test-frame" style="display:none;"></iframe>
@@ -24,40 +348,24 @@
                 const iframeWindow = iframe.contentWindow;
                 const iframeDocument = iframe.contentDocument || iframeWindow.document;
 
-                // Landing Page Tests
                 if (iframeWindow.location.pathname.endsWith('index.html')) {
                     results.push(testLandingPage(iframeDocument));
                 }
 
-                // Game Page Tests
-                if (iframeWindow.location.pathname.endsWith('game.html')) {
-                    results.push(testGamePage(iframeDocument, iframeWindow));
-                }
-
                 displayResults(results);
-
-                // Load the next test page
-                if (iframeWindow.location.pathname.endsWith('index.html')) {
-                    iframe.src = 'game.html';
-                } else {
-                    iframe.src = 'index.html'; // To re-run the tests
-                }
             };
 
-            // Start the tests by loading the landing page
-            iframe.src = 'index.html';
+            iframe.src = '../index.html';
         }
 
         function testLandingPage(doc) {
             const result = { name: 'Landing Page Tests', passed: true, messages: [] };
-
-            // Test Page Title
+            console.log(doc.title);
             if (doc.title !== 'Treasure Hunt') {
                 result.passed = false;
                 result.messages.push('Title should be "Treasure Hunt"');
             }
 
-            // Test Button Presence
             const button = doc.querySelector('button');
             if (!button) {
                 result.passed = false;
@@ -67,49 +375,6 @@
             return result;
         }
 
-        function testGamePage(doc, win) {
-            const result = { name: 'Game Page Tests', passed: true, messages: [] };
-
-            // Test Treasure Placement
-            const treasure = doc.getElementById('treasure');
-            if (!treasure) {
-                result.passed = false;
-                result.messages.push('Treasure element should be present');
-            }
-
-            // Simulate clicking the treasure
-            if (treasure) {
-                const box = treasure.getBoundingClientRect();
-                simulateClick(win, box.left + box.width / 2, box.top + box.height / 2);
-
-                // Check if treasure is displayed
-                if (win.getComputedStyle(treasure).display !== 'block') {
-                    result.passed = false;
-                    result.messages.push('Treasure should be displayed on click');
-                }
-
-                // Check for congratulatory message
-                const message = doc.getElementById('message').innerText;
-                if (message !== 'Congratulations! You found the treasure!') {
-                    result.passed = false;
-                    result.messages.push('Congratulatory message should be displayed');
-                }
-            }
-
-            return result;
-        }
-
-        function simulateClick(win, x, y) {
-            const clickEvent = new win.MouseEvent('click', {
-                clientX: x,
-                clientY: y,
-                bubbles: true,
-                cancelable: true,
-                view: win,
-            });
-            win.document.elementFromPoint(x, y).dispatchEvent(clickEvent);
-        }
-
         function displayResults(results) {
             const resultContainer = document.getElementById('test-results');
             resultContainer.innerHTML = '';
@@ -117,7 +382,7 @@
             results.forEach(result => {
                 const resultElement = document.createElement('div');
                 resultElement.className = 'test-result';
-                resultElement.innerHTML = `<strong>${result.name}:</strong> ${result.passed ? 'PASSED' : 'FAILED'}`;
+                resultElement.innerHTML = `<strong>${result.name}:</strong> ${result.passed ? 'PASSED Title and Start game' : 'FAILED'}`;
                 if (!result.passed) {
                     const messages = document.createElement('ul');
                     result.messages.forEach(message => {

@@ -3,12 +3,13 @@ start_button = document.getElementById("start-btn");
 
 
 document.addEventListener('DOMContentLoaded', function() {
+  const loading = document.querySelector('#loading');
+
   fetch('https://codecyprus.org/th/api/list')
   .then(response => response.json())
   .then(data => {
         const tableBody = document.querySelector('#hunts-table tbody');
         
-        // Clear existing rows
         console.log(data);
         tableBody.innerHTML = '';
         const header = document.createElement('tr');
@@ -49,7 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         });
     })
-    .catch(error => console.error('Error fetching data:', error));
+    .catch(error => console.error('Error fetching data:', error))
+    .finally(() => {
+      loading.style.display = 'none';
+  });
 });
 
 

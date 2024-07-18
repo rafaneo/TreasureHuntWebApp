@@ -36,11 +36,12 @@ function request(ans){
                 .then(data => {
                     console.log(data);
                     if (data.correct) {
-                        alert("Correct answer! You have earned 10 points.");
+                        alert(`Correct answer! You have earned ${data.scoreAdjustment} points.`);
                         resetCard();
                         updateScore(data.scoreAdjustment);
                         getQuestion(sessionID);
                     } else {
+                        updateScore(data.scoreAdjustment);
                         alert("Incorrect answer. Please try again.");
                     }
                 })
@@ -86,32 +87,31 @@ function answerCheck(question_type, answer){
 function canBeSkipped(value){ 
     if (value == true){
         skip_btn.style.display = "block";
-        skip_btn.addEventListener('click', function() {
-            let sessionID = getCookie("sessionID");
-            if (sessionID) {
-                fetch(`https://codecyprus.org/th/api/skip?session=${sessionID}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.status == 'OK') {
-                            alert("Question skipped. No points earned.");
-                            resetCard();
-                            getQuestion(sessionID);
-                        } else {
-                            alert("Error skipping question.");
-                        }
-                    })
-                    .catch(error => console.error('Error fetching data:', error));
-            } else {
-                console.error('Session ID not found in cookies');
-            }
-        });
     }
     else{
         skip_btn.style.display = "none";
     }
 }
-
+skip_btn.addEventListener('click', function() {
+    let sessionID = getCookie("sessionID");
+    if (sessionID) {
+        fetch(`https://codecyprus.org/th/api/skip?session=${sessionID}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.status == 'OK') {
+                    alert("Question skipped. No points earned.");
+                    resetCard();
+                    getQuestion(sessionID);
+                } else {
+                    alert("Error skipping question.");
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    } else {
+        console.error('Session ID not found in cookies');
+    }
+});
 function getQuestion(sessionID){ 
     if (sessionID) {
         fetch(`https://codecyprus.org/th/api/question?session=${sessionID}`)
